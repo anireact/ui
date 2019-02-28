@@ -1,0 +1,23 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/emoji",
+    "description": "Twitter",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/emoji",
+    "license": "GPL-3.0-or-later",
+    "main": "dist/index.js",
+    "name": "@anireact/emoji",
+    "repository": "anireact/ui",
+    "scripts": {
+        "build": "yarn build:js && yarn build:ts",
+        "build:js": "rollup -c ../../rollup.config.js",
+        "build:ts": "tsc --declaration --emitDeclarationOnly --outDir dist --pretty --rootDir src",
+        "clean": "rimraf dist",
+        "prepublishOnly": "yarn run clean && yarn run build"
+    },
+    "types": "dist/index.d.ts",
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5"
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/example",
+    "description": "An example app built with @anireact/ui.",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/example",
+    "license": "GPL-3.0-or-later",
+    "main": "dist/main.js",
+    "name": "@anireact/example",
+    "repository": "anireact/ui",
+    "private": true,
+    "scripts": {
+        "start": "webpack-dev-server --mode development",
+        "build": "webpack-cli --mode production"
+    },
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@anireact/themed": "^1.0.0-wip.22",
+        "@anireact/ui": "^1.0.0-wip.22",
+        "@babel/runtime": "^7.3.4",
+        "@tld/r": "^1.0.0-wip.22",
+        "core-js": "^2.6.5",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "styled-jsx": "^3.2.1"
+    },
+    "devDependencies": {
+        "@gfx/zopfli": "^1.0.11",
+        "@types/react": "^16.8.5",
+        "@types/react-dom": "^16.8.2",
+        "@types/styled-jsx": "^2.2.8",
+        "babel-loader": "^8.0.5",
+        "compression-webpack-plugin": "^2.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "source-map-loader": "^0.2.4",
+        "webpack": "^4.29.5",
+        "webpack-bundle-analyzer": "^3.0.4",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/logo",
+    "description": "anireact logo.",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/logo",
+    "license": "GPL-3.0-or-later",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "name": "@anireact/logo",
+    "repository": "anireact/ui",
+    "scripts": {
+        "build": "yarn build:js && yarn build:ts",
+        "build:js": "rollup -c ../../rollup.config.js",
+        "build:ts": "tsc --declaration --emitDeclarationOnly --outDir dist --pretty --rootDir src",
+        "clean": "rimraf dist",
+        "prepublishOnly": "yarn run clean && yarn run build"
+    },
+    "types": "dist/index.d.ts",
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@anireact/hsl": "^1.0.0-wip.22",
+        "@anireact/prelude": "^1.0.0-wip.22",
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5"
+    },
+    "peerDependencies": {
+        "react": "^16.8.3",
+        "styled-jsx": "^3.2.1"
+    },
+    "devDependencies": {
+        "@types/react": "^16.8.5",
+        "@types/react-dom": "^16.8.2",
+        "@types/styled-jsx": "^2.2.8"
+    }
+}
