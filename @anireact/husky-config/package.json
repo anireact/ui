@@ -1,0 +1,16 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/husky-config",
+    "description": "anireact’s Husky config.",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/husky-config",
+    "license": "GPL-3.0-or-later",
+    "main": "index.js",
+    "name": "@anireact/husky-config",
+    "repository": "anireact/ui",
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@anireact/commitlint-config": "^1.0.0-wip.22",
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5"
+    }
+}

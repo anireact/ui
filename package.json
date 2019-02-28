@@ -1,0 +1,46 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "repository": "anireact/ui",
+    "private": true,
+    "workspaces": [
+        "@anireact/*",
+        "@tld/*"
+    ],
+    "scripts": {
+        "lint": "eslint --ext '.js,.ts,.jsx,.tsx' -f ./node_modules/eslint-codeframe-formatter . && prettier --list-different './**/*.{js,jsx,ts,tsx,css,less,scss,html,json,md}'",
+        "fix": "eslint --fix --ext '.js,.ts,.jsx,.tsx' -f ./node_modules/eslint-codeframe-formatter . && prettier --write './**/*.{js,jsx,ts,tsx,css,less,scss,html,json,md}'"
+    },
+    "devDependencies": {
+        "@anireact/babel-preset": "^1.0.0-wip.22",
+        "@anireact/commitlint-config": "^1.0.0-wip.22",
+        "@anireact/eslint-config": "^1.0.0-wip.22",
+        "@anireact/husky-config": "^1.0.0-wip.22",
+        "@anireact/jest-config": "^1.0.0-wip.22",
+        "@anireact/lerna-config": "^1.0.0-wip.22",
+        "@anireact/new": "^1.0.0-wip.22",
+        "@anireact/prettier-config": "^1.0.0-wip.22",
+        "@anireact/typescript-config": "^1.0.0-wip.22",
+        "@babel/core": "^7.3.4",
+        "@commitlint/cli": "^7.5.2",
+        "@typescript-eslint/eslint-plugin": "^1.4.2",
+        "@typescript-eslint/parser": "^1.4.2",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "^24.1.0",
+        "dedent": "^0.7.0",
+        "enquirer": "^2.3.0",
+        "eslint": "^5.14.0",
+        "eslint-codeframe-formatter": "^1.0.2",
+        "husky": "^1.3.1",
+        "jest": "^24.1.0",
+        "jsdom": "^13.2.0",
+        "lerna": "^3.13.1",
+        "mkdirp": "^0.5.1",
+        "prettier": "^1.16.4",
+        "react": "^16.8.2",
+        "rollup": "^1.3.1",
+        "rollup-plugin-babel": "^4.3.2",
+        "styled-jsx": "^3.2.1",
+        "typescript": "^3.3.3",
+        "upath": "^1.1.0"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "@anireact/prettier-config",
+    "version": "1.0.0-wip.22",
+    "description": "anireact’s Prettier config.",
+    "main": "index.js",
+    "repository": "anireact/ui",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/prettier-config",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/prettier-config",
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "license": "GPL-3.0-or-later",
+    "dependencies": {
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5"
+    }
+}

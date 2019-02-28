@@ -1,0 +1,25 @@
+{
+    "name": "@anireact/new",
+    "version": "1.0.0-wip.22",
+    "description": "Spawns pkgs in your monorepo for you.",
+    "main": "index.js",
+    "repository": "anireact/ui",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/new",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/new",
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "license": "GPL-3.0-or-later",
+    "bin": {
+        "new": "./index.js"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5",
+        "cosmiconfig": "^5.0.7",
+        "cross-spawn": "^6.0.5",
+        "enquirer": "^2.0.7",
+        "json-stable-stringify": "^1.0.1",
+        "mkdirp": "^0.5.1",
+        "upath": "^1.1.0",
+        "yargs": "^13.2.1"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/babel-preset",
+    "description": "anireact’s Babel preset.",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/babel-preset",
+    "license": "GPL-3.0-or-later",
+    "main": "index.js",
+    "name": "@anireact/babel-preset",
+    "repository": "anireact/ui",
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.3.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.1.0",
+        "@babel/runtime": "^7.3.4",
+        "core-js": "^2.6.5",
+        "react": "^16.7.0",
+        "styled-jsx": "^3.2.0"
+    }
+}
