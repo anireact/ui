@@ -1,6 +1,7 @@
-import { clamp, map, padStart, round, size, toLower } from '@anireact/prelude';
+import { map, padStart, size, toLower } from '@anireact/prelude';
 import { A, Hsl, Hsla, Rgb } from './Components';
 import { hslToRgb, rgbToHsl } from './Derived';
+import { getIntegerRgba } from './getIntegerRgba';
 
 export const hexToHsl = (hex: string): Hsla => {
     const re = /^#?(?:([\da-f]{2})([\da-f]{2})([\da-f]{2})([\da-f]{2})?|([\da-f])([\da-f])([\da-f])([\da-f])?)$/u;
@@ -20,8 +21,8 @@ export const hexToHsl = (hex: string): Hsla => {
 export const hslToHex = (hsla: Hsl, compact = true, alpha = true): string => {
     const [r, g, b, a = 1 as A] = hslToRgb(hsla);
 
-    const wide = map(alpha ? [r, g, b, a] : [r, g, b], x => {
-        return toLower(padStart(round(clamp(0, x, 1) * 255).toString(16), 2, '0'));
+    const wide = map(getIntegerRgba(alpha ? [r, g, b, a] : [r, g, b]), x => {
+        return toLower(padStart(x.toString(16), 2, '0'));
     }).join('');
 
     const narrow = compact
