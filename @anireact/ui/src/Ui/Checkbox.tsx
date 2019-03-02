@@ -19,11 +19,6 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
         const icon = ['checkbox-', checked ? 'checked-' : checked === null ? 'mixed-' : '', 'symbolic'].join('');
         const paddingV = hasTouch ? ixs3 : ixs5;
 
-        const regularShadow = `inset 0 0 0 ${xs5} ${bg}`;
-        const keyboardShadow = hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : regularShadow;
-        const focusShadow = `0 0 0 ${xs5} ${focus}`;
-        const activeShadow = `inset 0 ${xs6} ${xs4} ${active}`;
-
         return (
             <>
                 <button {...props} ref={ref} className={className}>
@@ -48,7 +43,6 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
                         border-radius: ${xs4};
                         background-color: ${bg};
                         background-image: ${glowGradient};
-                        box-shadow: ${regularShadow};
 
                         color: ${fg};
 
@@ -66,7 +60,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
 
                         outline: none;
 
-                        box-shadow: ${keyboardShadow}, ${focusShadow};
+                        box-shadow: ${hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : 'none'}, 0 0 0 ${xs5} ${focus};
                     }
 
                     button:active > div.icon {
@@ -88,7 +82,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
                     }
 
                     button:active::after {
-                        box-shadow: ${activeShadow};
+                        box-shadow: inset 0 ${xs6} ${xs4} ${active};
                     }
 
                     button > div.icon {
