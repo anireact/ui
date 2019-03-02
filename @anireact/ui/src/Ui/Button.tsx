@@ -8,13 +8,16 @@ export type Button = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, 
 
 export const Button = decorate<Button, HTMLButtonElement>(
     { name: 'Button' },
-    ({ checked, ...props }, { ref, className, theme }) => {
+    ({ checked, role = 'button', ...props }, { ref, className, theme }) => {
         const { ui, fg, bg, hover, focus, active, glow, hasTouch } = theme;
         const { xl3, xs3, xs4, xs5, xs6, ixs2, ixs5, ixs3 } = theme;
 
+        const toggle = role === 'switch' || role === 'radio' || role === 'checkbox';
+        const aria = toggle ? { 'aria-checked': Boolean(checked) } : {};
+
         return (
             <>
-                <button {...props} ref={ref} className={className} />
+                <button {...aria} {...props} role={role} ref={ref} className={className} />
                 <style jsx>{/* language=CSS */ `
                     button {
                         position: relative;
@@ -61,7 +64,7 @@ export const Button = decorate<Button, HTMLButtonElement>(
                         bottom: ${xs5};
 
                         border-radius: ${xs6};
-                        box-shadow: ${checked ? `inset 0 ${xs6} ${xs5} ${active}` : 'none'};
+                        box-shadow: ${toggle && checked ? `inset 0 ${xs6} ${xs5} ${active}` : 'none'};
                     }
 
                     button:active::after {

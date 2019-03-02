@@ -16,15 +16,18 @@ export const Icon = decorate<Icon, HTMLImageElement>(
     ({ name, tintColor, tintStyle, size = 16, ...props }, { ref, className, theme }) => {
         const { iconsBase, iconsTheme } = theme;
 
+        const label = `(icon: ${name})`;
+
         return (
             <>
                 <img
-                    title={`Icon: ${name}`}
+                    title={label}
+                    alt={label}
+                    aria-label={label}
                     {...props}
                     ref={ref}
                     className={className}
                     src={`${iconsBase}/${iconsTheme}/${size}/${name}.svg`}
-                    alt={`icon (${name})`}
                 />
                 <style jsx>{/* language=CSS */ `
                     img {

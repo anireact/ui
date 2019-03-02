@@ -17,12 +17,20 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
 
         const icon = ['checkbox-', checked ? 'checked-' : checked === null ? 'mixed-' : '', 'symbolic'].join('');
         const paddingV = hasTouch ? ixs3 : ixs5;
+        const state = checked === null ? 'mixed' : Boolean(checked);
 
         return (
             <>
-                <button {...props} ref={ref} className={className}>
+                <button role={'checkbox'} aria-checked={state} {...props} ref={ref} className={className}>
                     <div className={'icon'}>
-                        <Icon size={16} name={icon as IconName} title={undefined} tintColor={fg} tintStyle={'fill'} />
+                        <Icon
+                            role={'presentation'}
+                            size={16}
+                            name={icon as IconName}
+                            title={undefined}
+                            tintColor={fg}
+                            tintStyle={'fill'}
+                        />
                     </div>
                     <div className={'text'}>{children}</div>
                 </button>
