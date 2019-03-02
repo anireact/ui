@@ -9,14 +9,8 @@ export type Button = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, 
 export const Button = decorate<Button, HTMLButtonElement>(
     { name: 'Button' },
     ({ checked, ...props }, { ref, className, theme }) => {
-        const { ui, fg, bg, hover, focus, active, glow, hasKeyboard, hasTouch } = theme;
+        const { ui, fg, bg, hover, focus, active, glow, hasTouch } = theme;
         const { xl3, xs3, xs4, xs5, xs6, ixs2, ixs5, ixs3 } = theme;
-
-        const regularShadow = `inset 0 0 0 ${xs5} ${bg}`;
-        const keyboardShadow = hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : regularShadow;
-        const focusShadow = `0 0 0 ${xs5} ${focus}`;
-        const activeShadow = `inset 0 ${xs6} ${xs3} ${xs5} ${active}`;
-        const pushShadow = checked ? `${regularShadow}, inset 0 ${xs6} ${xs5} ${xs5} ${active}` : regularShadow;
 
         return (
             <>
@@ -34,7 +28,6 @@ export const Button = decorate<Button, HTMLButtonElement>(
 
                         background-color: ${bg};
                         background-image: ${glowGradient};
-                        box-shadow: ${pushShadow};
                         border-radius: ${xs4};
 
                         color: ${fg};
@@ -53,15 +46,26 @@ export const Button = decorate<Button, HTMLButtonElement>(
 
                         outline: none;
 
-                        box-shadow: ${keyboardShadow}, ${focusShadow}, ${pushShadow};
+                        box-shadow: inset 0 0 0 ${xs5} ${focus}, 0 0 0 ${xs5} ${focus};
                     }
 
-                    button:active {
-                        box-shadow: ${regularShadow}, ${activeShadow};
+                    button::after {
+                        content: '';
+
+                        display: block;
+                        position: absolute;
+
+                        top: ${xs5};
+                        left: ${xs5};
+                        right: ${xs5};
+                        bottom: ${xs5};
+
+                        border-radius: ${xs6};
+                        box-shadow: ${checked ? `inset 0 ${xs6} ${xs5} ${active}` : 'none'};
                     }
 
-                    button:focus:active {
-                        box-shadow: ${keyboardShadow}, ${activeShadow}, ${focusShadow};
+                    button:active::after {
+                        box-shadow: inset 0 ${xs6} ${xs3} ${active};
                     }
                 `}</style>
             </>

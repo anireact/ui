@@ -11,7 +11,7 @@ export type Checkbox = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>
 export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
     { name: 'Checkbox' },
     ({ checked, children, ...props }, { ref, className, theme }) => {
-        const { ui, plain, hasTouch, hasKeyboard, active, focus, uiHeight } = theme;
+        const { ui, plain, hasTouch, active, focus, uiHeight } = theme;
         const { xs3, xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
         const { bg, fg, hover, glow } = plain;
 
@@ -59,7 +59,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
 
                         outline: none;
 
-                        box-shadow: ${hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : 'none'}, 0 0 0 ${xs5} ${focus};
+                        box-shadow: inset 0 0 0 ${xs5} ${focus}, 0 0 0 ${xs5} ${focus};
                     }
 
                     button:active > div.icon {
