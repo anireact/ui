@@ -11,7 +11,7 @@ export const colorMatrix = (...m: Vector20<number>) => [pu, ps, map(m, x => x.to
 
 const pu = `url("data:image/svg+xml;utf8,`;
 const ps = `<svg xmlns='http://www.w3.org/2000/svg'><filter id='matrix'><feColorMatrix type='matrix' values='`;
-const ss = ` /></filter></svg>`;
+const ss = `' /></filter></svg>`;
 const su = `#matrix")`;
 
 export const classes = (...classes: (string | null | undefined | void)[]) => classes.filter(Boolean).join(' ');
