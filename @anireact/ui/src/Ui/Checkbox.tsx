@@ -12,7 +12,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
     { name: 'Checkbox' },
     ({ checked, children, ...props }, { ref, className, theme }) => {
         const { ui, plain, hasTouch, hasKeyboard, active, focus, uiHeight } = theme;
-        const { xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
+        const { xs3, xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
         const { bg, fg, hover, glow } = plain;
 
         const icon = ['checkbox-', checked ? 'checked-' : checked === null ? 'mixed-' : '', 'symbolic'].join('');
@@ -81,7 +81,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
                     }
 
                     button:active::after {
-                        box-shadow: inset 0 ${xs6} ${xs4} ${active};
+                        box-shadow: inset 0 ${xs6} ${xs3} ${active};
                     }
 
                     button > div.icon {

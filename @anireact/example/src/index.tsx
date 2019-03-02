@@ -43,6 +43,11 @@ render(
                         long title
                     </Button>
                 </P>
+                <P>
+                    <Button level={'info'} checked>
+                        Checked push button
+                    </Button>
+                </P>
             </Section>
             <Section level={'primary'}>
                 <H>Checkboxes</H>
