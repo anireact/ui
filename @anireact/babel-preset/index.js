@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-/* eslint-disable max-lines-per-function */
 
 const env = process.env.NODE_ENV || process.env.BABEL_ENV;
 
