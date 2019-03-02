@@ -78,7 +78,7 @@ export const black: RawTheme = {
         active: [0, 0, 0, 1],
         hover: [0, 0, 80, 1],
         even: [0, 0, 100, 0.05],
-        glow: [0, 0, 0, 0.2],
+        glow: [0, 0, 0, 0.25],
         bg: [0, 0, 100, 1],
         fg: [0, 0, 0, 1],
 
@@ -107,7 +107,7 @@ export const black: RawTheme = {
     active: [100, 0, 1],
     hover: [100, 25, 1],
     even: [0, 100, 0.05],
-    glow: [0, 100, 0.2],
+    glow: [0, 100, 0.25],
     bg: [100, 35, 1],
     fg: [0, 100, 1],
 
@@ -115,7 +115,7 @@ export const black: RawTheme = {
         active: [100, 60, 0.3333],
         hover: [100, 50, 0.25],
         even: [100, 50, 0.1667],
-        glow: [100, 16.67, 1],
+        glow: [100, 25, 1],
         bg: [0, 0, 0],
         fg: [100, 69, 1],
     },

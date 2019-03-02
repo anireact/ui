@@ -1,5 +1,8 @@
+import { hsl } from '@anireact/hsl';
 import { Themed } from '@anireact/themed';
+
 import { Button, Checkbox, decorate, GlobalStyle, H, Icon, P, Prop, PropK, Props, PropV, Section } from '@anireact/ui';
+
 import React, { ReactNode } from 'react';
 import { render } from 'react-dom';
 import { black } from './black';
@@ -39,20 +42,93 @@ render(
             </Section>
             <Section level={'primary'}>
                 <H>Icons</H>
-                <Props level={'base'}>
-                    <Prop>
-                        <PropK>preferences-desktop-locale-symbolic</PropK>
-                        <PropV>
-                            <Icon name={'preferences-desktop-locale-symbolic'} />
-                        </PropV>
-                    </Prop>
-                    <Prop>
-                        <PropK>application-pdf</PropK>
-                        <PropV>
-                            <Icon name={'application-pdf'} />
-                        </PropV>
-                    </Prop>
-                </Props>
+                <Section>
+                    <H>state-error</H>
+                    <Props level={'base'}>
+                        <Prop>
+                            <PropK>Default colors:</PropK>
+                            <PropV>
+                                <Icon name={'state-error'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Filled with red:</PropK>
+                            <PropV>
+                                <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
+                            <PropV>
+                                <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
+                            <PropV>
+                                <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
+                            </PropV>
+                        </Prop>
+                    </Props>
+                </Section>
+                <Section>
+                    <H>battery-low-charging</H>
+                    <Props level={'base'}>
+                        <Prop>
+                            <PropK>Default colors:</PropK>
+                            <PropV>
+                                <Icon name={'battery-low-charging'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Filled with red:</PropK>
+                            <PropV>
+                                <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
+                            <PropV>
+                                <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
+                            <PropV>
+                                <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
+                            </PropV>
+                        </Prop>
+                    </Props>
+                </Section>
+                <Section>
+                    <H>krita</H>
+                    <Props level={'base'}>
+                        <Prop>
+                            <PropK>Default colors:</PropK>
+                            <PropV>
+                                <Icon name={'krita'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Filled with red:</PropK>
+                            <PropV>
+                                <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
+                            <PropV>
+                                <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
+                            </PropV>
+                        </Prop>
+                        <Prop>
+                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
+                            <PropV>
+                                <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
+                            </PropV>
+                        </Prop>
+                    </Props>
+                </Section>
             </Section>
             <Section level={'primary'}>
                 <H>Buttons</H>
