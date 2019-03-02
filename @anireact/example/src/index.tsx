@@ -1,7 +1,7 @@
 import { hsl } from '@anireact/hsl';
 import { Themed } from '@anireact/themed';
 
-import { Button, Buttons, Checkbox, decorate, GlobalStyle, H, Icon, P, Props, Section } from '@anireact/ui';
+import { Button, Buttons, Checkbox, decorate, GlobalStyle, H, Icon, P, Props, Push, Section } from '@anireact/ui';
 
 import React, { ReactNode } from 'react';
 import { render } from 'react-dom';
@@ -56,9 +56,9 @@ render(
                     </Button>
                 </P>
                 <P>
-                    <Button level={'info'} role={'switch'} checked>
+                    <Push level={'info'} checked>
                         Checked push button
-                    </Button>
+                    </Push>
                 </P>
             </Section>
             <Section level={'primary'}>

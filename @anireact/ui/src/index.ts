@@ -6,6 +6,7 @@ export * from './Ui/H';
 export * from './Ui/Icon';
 export * from './Ui/P';
 export * from './Ui/Props';
+export * from './Ui/Push';
 export * from './Ui/Section';
 
 export * from './Ui/decorate';
