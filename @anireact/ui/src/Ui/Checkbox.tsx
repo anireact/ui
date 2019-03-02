@@ -1,5 +1,4 @@
 import { IconName } from '@anireact/icons';
-import { px } from '@anireact/prelude';
 import { glowColor, glowEnd, glowGradient } from '@anireact/themed';
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { decorate } from './decorate';
@@ -38,7 +37,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
 
                         ${ui};
 
-                        padding: ${paddingV} ${ixs2} ${paddingV} calc(${ixs2} - ${px(2)});
+                        padding: ${paddingV} ${ixs2} ${paddingV} calc(${ixs2} - 2px);
 
                         border-radius: ${xs4};
                         background-color: ${bg};
@@ -88,7 +87,7 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
                     button > div.icon {
                         height: ${uiHeight};
                         padding-top: 2px;
-                        margin-right: calc(${ixs2} - ${px(2)});
+                        margin-right: calc(${ixs2} - 2px);
                     }
                 `}</style>
             </>

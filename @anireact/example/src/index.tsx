@@ -25,6 +25,26 @@ render(
         <GlobalStyle />
         <Body>
             <Section level={'primary'}>
+                <H>Buttons</H>
+                <P>
+                    <Button>Base button</Button>
+                </P>
+                <P>
+                    <Button level={'primary'}>
+                        Primary button w/
+                        <br />
+                        long title
+                    </Button>
+                </P>
+                <P>
+                    <Button level={'error'}>
+                        Error button w/
+                        <br />
+                        long title
+                    </Button>
+                </P>
+            </Section>
+            <Section level={'primary'}>
                 <H>Checkboxes</H>
                 <P>
                     <Checkbox level={'error'}>Unchecked</Checkbox>
@@ -129,26 +149,6 @@ render(
                         </Prop>
                     </Props>
                 </Section>
-            </Section>
-            <Section level={'primary'}>
-                <H>Buttons</H>
-                <P>
-                    <Button>Base button</Button>
-                </P>
-                <P>
-                    <Button level={'primary'}>
-                        Primary button w/
-                        <br />
-                        long title
-                    </Button>
-                </P>
-                <P>
-                    <Button level={'error'}>
-                        Error button w/
-                        <br />
-                        long title
-                    </Button>
-                </P>
             </Section>
             <Section level={'primary'}>
                 <H>Props</H>
