@@ -1,5 +1,5 @@
 import { IconName } from '@anireact/icons';
-import { cssvar, px } from '@anireact/prelude';
+import { px } from '@anireact/prelude';
 import { glowColor, glowEnd, glowGradient } from '@anireact/themed';
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { decorate } from './decorate';
@@ -12,27 +12,30 @@ export type Checkbox = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>
 export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
     { name: 'Checkbox' },
     ({ checked, children, ...props }, { ref, className, theme }) => {
-        const { ui, plain, hasTouch, hasKeyboard, active, glow, focus } = theme;
+        const { ui, plain, hasTouch, hasKeyboard, active, focus, uiHeight } = theme;
         const { xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
-        const { bg, fg, hover } = plain;
+        const { bg, fg, hover, glow } = plain;
 
         const icon = ['checkbox-', checked ? 'checked-' : checked === null ? 'mixed-' : '', 'symbolic'].join('');
-        const iconClass = cssvar('anireact-checkbox-icon');
         const paddingV = hasTouch ? ixs3 : ixs5;
 
         const regularShadow = `inset 0 0 0 ${xs5} ${bg}`;
         const keyboardShadow = hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : regularShadow;
         const focusShadow = `0 0 0 ${xs5} ${focus}`;
-        const activeShadow = `inset 0 ${xs6} ${xs4} ${xs5} ${active}`;
+        const activeShadow = `inset 0 ${xs6} ${xs4} ${active}`;
 
         return (
             <>
                 <button {...props} ref={ref} className={className}>
-                    <Icon size={16} name={icon as IconName} title={undefined} className={iconClass} />
-                    {children}
+                    <div className={'icon'}>
+                        <Icon size={16} name={icon as IconName} title={undefined} tintColor={fg} tintStyle={'fill'} />
+                    </div>
+                    <div className={'text'}>{children}</div>
                 </button>
                 <style jsx>{/* language=CSS */ `
                     button {
+                        display: inline-flex;
+
                         position: relative;
                         border: none;
 
@@ -66,16 +69,31 @@ export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
                         box-shadow: ${keyboardShadow}, ${focusShadow};
                     }
 
-                    button:active {
-                        box-shadow: ${regularShadow}, ${activeShadow};
+                    button:active > div.icon {
+                        transform: scale(0.8);
                     }
 
-                    button:focus:active {
-                        box-shadow: ${keyboardShadow}, ${activeShadow}, ${focusShadow};
+                    button::after {
+                        content: '';
+
+                        display: block;
+                        position: absolute;
+
+                        top: ${xs5};
+                        left: ${xs5};
+                        right: ${xs5};
+                        bottom: ${xs5};
+
+                        border-radius: ${xs6};
                     }
 
-                    button > :global(img.${iconClass}) {
-                        vertical-align: -4px;
+                    button:active::after {
+                        box-shadow: ${activeShadow};
+                    }
+
+                    button > div.icon {
+                        height: ${uiHeight};
+                        padding-top: 2px;
                         margin-right: calc(${ixs2} - ${px(2)});
                     }
                 `}</style>
