@@ -1,6 +1,7 @@
 export * from './Hsl/Color';
 export * from './Hsl/Components';
 export * from './Hsl/Derived';
+export * from './Hsl/Luma';
 export * from './Hsl/Shorthand';
 
 export * from './Hsl/HexHsl';
