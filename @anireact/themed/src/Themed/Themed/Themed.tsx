@@ -1,5 +1,5 @@
 import { always, getM, identity, maybe } from '@anireact/prelude';
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactElement, ReactNode, useEffect, useState } from 'react';
 import { black } from '../Lib/black';
 import { createLib } from '../Lib/createLib';
 import { RawLib } from '../Lib/RawLib';
@@ -11,6 +11,7 @@ import { watchPrint } from '../Media/watchPrint';
 import { watchTouch } from '../Media/watchTouch';
 import { createTheme } from '../Theme/createTheme';
 import { ThemedContext } from '../ThemedContext/ThemedContext';
+import { useThemed } from './useThemed';
 
 export interface Themed {
     readonly id: string;
@@ -52,6 +53,6 @@ export const Themed = ({ lib, id, children }: Themed) => {
 
 export const themed = <Props extends object>(
     component: (props: Props, context: ThemedContext) => ReactNode,
-): FunctionComponent<Props> => (props: Props) => (
-    <ThemedContext.Consumer>{context => component(props, context)}</ThemedContext.Consumer>
-);
+): FunctionComponent<Props> => (props: Props) => {
+    return component(props, useThemed()) as ReactElement;
+};
