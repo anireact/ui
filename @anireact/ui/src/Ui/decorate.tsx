@@ -98,7 +98,7 @@ const forward = <E extends SyntheticEvent>(f: ((e: E) => void) | undefined, g: (
     return undefined;
 };
 
-const onPointerMove = <E extends SyntheticEvent<any, any>>(e: E) => {
+const onPointerMove = <E extends SyntheticEvent<HTMLElement, PointerEvent>>(e: E) => {
     const {
         currentTarget,
         target,
@@ -107,19 +107,11 @@ const onPointerMove = <E extends SyntheticEvent<any, any>>(e: E) => {
 
     const { style } = currentTarget as HTMLElement;
 
-    let [node, prev] = [target as null | HTMLElement, target as null | HTMLElement];
-    let [x, y] = [offsetX, offsetY];
+    const currentRect = (currentTarget as Element).getBoundingClientRect();
+    const rect = (target as Element).getBoundingClientRect();
 
-    while (prev !== null && node !== null && node !== currentTarget) {
-        node = node.parentElement;
-
-        [x, y] = [x + prev.offsetLeft - (node ? node.offsetLeft : 0), y + prev.offsetTop - (node ? node.offsetTop : 0)];
-
-        prev = node;
-    }
-
-    style.setProperty(glowX, px(x));
-    style.setProperty(glowY, px(y));
+    style.setProperty(glowX, px(offsetX + rect.left - currentRect.left));
+    style.setProperty(glowY, px(offsetY + rect.top - currentRect.top));
 };
 
 const LevelContext = createContext(null as null | Level);
