@@ -1,7 +1,7 @@
 import { hsl } from '@anireact/hsl';
 import { Themed } from '@anireact/themed';
 
-import { Button, Checkbox, decorate, GlobalStyle, H, Icon, P, Prop, PropK, Props, PropV, Section } from '@anireact/ui';
+import { Button, Buttons, Checkbox, decorate, GlobalStyle, H, Icon, P, Props, Section } from '@anireact/ui';
 
 import React, { ReactNode } from 'react';
 import { render } from 'react-dom';
@@ -25,9 +25,21 @@ render(
         <GlobalStyle />
         <Body>
             <Section level={'primary'}>
-                <H>Buttons</H>
+                <H>Buttons group</H>
+
                 <P>
-                    <Button>Base button</Button>
+                    <Buttons>
+                        <Buttons.Item>Option 1</Buttons.Item>
+                        <Buttons.Item checked>Option 2</Buttons.Item>
+                        <Buttons.Item>Option 3</Buttons.Item>
+                    </Buttons>
+                </P>
+            </Section>
+            <Section level={'primary'}>
+                <H>Buttons</H>
+
+                <P>
+                    <Button level={'base'}>Base button</Button>
                 </P>
                 <P>
                     <Button level={'primary'}>
@@ -44,13 +56,14 @@ render(
                     </Button>
                 </P>
                 <P>
-                    <Button level={'info'} checked>
+                    <Button level={'info'} role={'switch'} checked>
                         Checked push button
                     </Button>
                 </P>
             </Section>
             <Section level={'primary'}>
                 <H>Checkboxes</H>
+
                 <P>
                     <Checkbox level={'error'}>Unchecked</Checkbox>
                 </P>
@@ -67,133 +80,136 @@ render(
             </Section>
             <Section level={'primary'}>
                 <H>Icons</H>
+
                 <Section>
                     <H>state-error</H>
                     <Props level={'base'}>
-                        <Prop>
-                            <PropK>Default colors:</PropK>
-                            <PropV>
+                        <Props.Item>
+                            <Props.K>Default colors:</Props.K>
+                            <Props.V>
                                 <Icon name={'state-error'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Filled with red:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Filled with red:</Props.K>
+                            <Props.V>
                                 <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘᵢₙ:</Props.K>
+                            <Props.V>
                                 <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘₐₓ:</Props.K>
+                            <Props.V>
                                 <Icon name={'state-error'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
-                            </PropV>
-                        </Prop>
+                            </Props.V>
+                        </Props.Item>
                     </Props>
                 </Section>
                 <Section>
                     <H>battery-low-charging</H>
                     <Props level={'base'}>
-                        <Prop>
-                            <PropK>Default colors:</PropK>
-                            <PropV>
+                        <Props.Item>
+                            <Props.K>Default colors:</Props.K>
+                            <Props.V>
                                 <Icon name={'battery-low-charging'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Filled with red:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Filled with red:</Props.K>
+                            <Props.V>
                                 <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘᵢₙ:</Props.K>
+                            <Props.V>
                                 <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘₐₓ:</Props.K>
+                            <Props.V>
                                 <Icon name={'battery-low-charging'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
-                            </PropV>
-                        </Prop>
+                            </Props.V>
+                        </Props.Item>
                     </Props>
                 </Section>
                 <Section>
                     <H>krita</H>
                     <Props level={'base'}>
-                        <Prop>
-                            <PropK>Default colors:</PropK>
-                            <PropV>
+                        <Props.Item>
+                            <Props.K>Default colors:</Props.K>
+                            <Props.V>
                                 <Icon name={'krita'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Filled with red:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Filled with red:</Props.K>
+                            <Props.V>
                                 <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'fill'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘᵢₙ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘᵢₙ:</Props.K>
+                            <Props.V>
                                 <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'black'} />
-                            </PropV>
-                        </Prop>
-                        <Prop>
-                            <PropK>Tinted with red by Yₘₐₓ:</PropK>
-                            <PropV>
+                            </Props.V>
+                        </Props.Item>
+                        <Props.Item>
+                            <Props.K>Tinted with red by Yₘₐₓ:</Props.K>
+                            <Props.V>
                                 <Icon name={'krita'} tintColor={hsl(10, 100, 50)} tintStyle={'white'} />
-                            </PropV>
-                        </Prop>
+                            </Props.V>
+                        </Props.Item>
                     </Props>
                 </Section>
             </Section>
             <Section level={'primary'}>
                 <H>Props</H>
+
                 <Props level={'error'}>
-                    <Prop>
-                        <PropK>Prop key 1:</PropK>
-                        <PropV>Prop value 1.</PropV>
-                    </Prop>
-                    <Prop>
-                        <PropK>Very long prop key 2:</PropK>
-                        <PropV>Prop value 2.</PropV>
-                    </Prop>
-                    <Prop level={'ok'}>
-                        <PropK>Prop key 3:</PropK>
-                        <PropV>Very long prop value 3.</PropV>
-                    </Prop>
-                    <Prop>
-                        <PropK>
+                    <Props.Item>
+                        <Props.K>Prop key 1:</Props.K>
+                        <Props.V>Prop value 1.</Props.V>
+                    </Props.Item>
+                    <Props.Item>
+                        <Props.K>Very long prop key 2:</Props.K>
+                        <Props.V>Prop value 2.</Props.V>
+                    </Props.Item>
+                    <Props.Item level={'ok'}>
+                        <Props.K>Prop key 3:</Props.K>
+                        <Props.V>Very long prop value 3.</Props.V>
+                    </Props.Item>
+                    <Props.Item>
+                        <Props.K>
                             Multi-
                             <br />
                             line prop key 4:
-                        </PropK>
-                        <PropV>Prop value 4.</PropV>
-                    </Prop>
-                    <Prop>
-                        <PropK>Prop key 5:</PropK>
-                        <PropV>
+                        </Props.K>
+                        <Props.V>Prop value 4.</Props.V>
+                    </Props.Item>
+                    <Props.Item>
+                        <Props.K>Prop key 5:</Props.K>
+                        <Props.V>
                             Multi-
                             <br />
                             line prop value 5.
-                        </PropV>
-                    </Prop>
-                    <Prop>
-                        <PropK>Last prop:</PropK>
-                        <PropV>Should be even.</PropV>
-                    </Prop>
+                        </Props.V>
+                    </Props.Item>
+                    <Props.Item>
+                        <Props.K>Last prop:</Props.K>
+                        <Props.V>Should be even.</Props.V>
+                    </Props.Item>
                 </Props>
             </Section>
             <Section level={'primary'}>
                 <H>Headings, sections, paragraphs</H>
+
                 <H level={'base'}>Heading, level 1</H>
                 <P level={'base'}>Paragraph at level 1.</P>
                 <P level={'base'}>Another paragraph at level 1.</P>
