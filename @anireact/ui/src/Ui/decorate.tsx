@@ -1,4 +1,4 @@
-import { cssvar, isNone, not, px } from '@anireact/prelude';
+import { classes, cssvar, px } from '@anireact/prelude';
 import { glowX, glowY, Level, LevelPalette, ThemedContext, useThemed } from '@anireact/themed';
 import { TldrContext, useTldr } from '@tld/r';
 
@@ -6,8 +6,8 @@ import React, {
     createContext,
     DOMAttributes,
     forwardRef,
-    FunctionComponent,
     memo,
+    NamedExoticComponent,
     PropsWithoutRef,
     PropsWithRef,
     ReactElement,
@@ -46,27 +46,40 @@ type Props<P, R> = PropsWithRef<PropsWithoutRef<P> & RefAttributes<R>> & Capture
 type Passed<P> = Pick<P, Exclude<keyof P, keyof CapturedProps>>;
 
 type Raw<P, R> = (props: Passed<P>, injected: InjectedProps<R>) => ReactNode;
-type Decorated<P, R> = FunctionComponent<Props<P, R>>;
+type Decorated<P, R> = NamedExoticComponent<Props<P, R>>;
 
-export const decorate = <P extends Required, R extends HTMLElement>(o: Decorator, c: Raw<P, R>): Decorated<P, R> => {
+export function decorate<P extends Required, R extends HTMLElement, S extends object | null = null>(
+    o: Decorator,
+    c: Raw<P, R>,
+): Decorated<P, R>;
+
+export function decorate<P extends Required, R extends HTMLElement, S extends object | null = null>(
+    o: Decorator,
+    c: Raw<P, R>,
+    sub: S,
+): Decorated<P, R> & (S extends null ? {} : S);
+
+export function decorate<P extends Required, R extends HTMLElement, S extends object | null = null>(
+    o: Decorator,
+    c: Raw<P, R>,
+    sub?: S,
+): Decorated<P, R> & (S extends null ? {} : S) {
     const { name, providesLevel = true, consumesLevel = true } = o;
     const root = cssvar(name);
 
     const Component = memo(
         forwardRef<R, P & CapturedProps>((props, ref) => {
             const { className, level, disabled = false, ...passed } = props;
-            const tld = useTldr();
             const themed = useThemed();
-            const levelContext = useContext(LevelContext);
-            const actualLevel = consumesLevel ? level || levelContext || 'base' : level || 'base';
+            const actualLevel = consumesLevel ? level || useContext(LevelContext) || 'base' : level || 'base';
 
             const node = c(
                 { ...passed, onPointerMove: forward(passed.onPointerMove, onPointerMove) },
                 {
                     ref,
-                    tld,
                     disabled,
-                    className: [className, root].filter(not(isNone)).join(' '),
+                    tld: useTldr(),
+                    className: classes(className, root),
                     theme: { ...themed, ...themed[disabled ? 'disabled' : actualLevel] },
                 },
             ) as ReactElement;
@@ -87,8 +100,8 @@ export const decorate = <P extends Required, R extends HTMLElement>(o: Decorator
     Reflect.defineProperty(Component, 'valueOf', { value });
     Reflect.defineProperty(Component, Symbol.toPrimitive, { value });
 
-    return Component;
-};
+    return Object.assign(Component, sub || ({} as any)); // eslint-disable-line fp/no-mutating-assign
+}
 
 const forward = <E extends SyntheticEvent>(f: ((e: E) => void) | undefined, g: (e: E) => void) => (e: E) => {
     g(e);
