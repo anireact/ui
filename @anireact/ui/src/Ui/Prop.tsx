@@ -11,29 +11,26 @@ type Children = {
 
 export type Prop = Pick<Row, Exclude<keyof Row, 'children'>> & Children;
 
-export const Prop = decorate<Prop, HTMLTableRowElement>(
-    { name: 'Prop', consumesLevel: true, providesLevel: true },
-    (props, { ref, className, theme }) => {
-        const { even, plain } = theme;
-        const { fg, hover } = plain;
+export const Prop = decorate<Prop, HTMLTableRowElement>({ name: 'Prop' }, (props, { ref, className, theme }) => {
+    const { even, plain } = theme;
+    const { fg, hover } = plain;
 
-        return (
-            <>
-                <tr {...props} ref={ref} className={className} />
-                <style jsx>{/* language=CSS */ `
-                    tr {
-                        color: ${fg};
-                    }
+    return (
+        <>
+            <tr {...props} ref={ref} className={className} />
+            <style jsx>{/* language=CSS */ `
+                tr {
+                    color: ${fg};
+                }
 
-                    tr:nth-child(even) {
-                        background-color: ${even};
-                    }
+                tr:nth-child(even) {
+                    background-color: ${even};
+                }
 
-                    tr:hover {
-                        background-color: ${hover};
-                    }
-                `}</style>
-            </>
-        );
-    },
-);
+                tr:hover {
+                    background-color: ${hover};
+                }
+            `}</style>
+        </>
+    );
+});

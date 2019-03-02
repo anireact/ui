@@ -49,7 +49,7 @@ type Raw<P, R> = (props: Passed<P>, injected: InjectedProps<R>) => ReactNode;
 type Decorated<P, R> = FunctionComponent<Props<P, R>>;
 
 export const decorate = <P extends Required, R extends HTMLElement>(o: Decorator, c: Raw<P, R>): Decorated<P, R> => {
-    const { name, providesLevel, consumesLevel } = o;
+    const { name, providesLevel = true, consumesLevel = true } = o;
     const root = cssvar(name);
 
     const Component = memo(

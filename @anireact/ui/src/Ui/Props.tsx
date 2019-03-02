@@ -10,25 +10,22 @@ type Children = {
 
 export type Props = Pick<Table, Exclude<keyof Table, 'children'>> & Children;
 
-export const Props = decorate<Props, HTMLTableElement>(
-    { name: 'Props', consumesLevel: true, providesLevel: true },
-    (props, { ref, className, theme }) => {
-        const { plain } = theme;
-        const { fg } = plain;
+export const Props = decorate<Props, HTMLTableElement>({ name: 'Props' }, (props, { ref, className, theme }) => {
+    const { plain } = theme;
+    const { fg } = plain;
 
-        return (
-            <>
-                <table {...props} ref={ref} className={className}>
-                    <tbody>{props.children}</tbody>
-                </table>
-                <style jsx>{/* language=CSS */ `
-                    table {
-                        border-spacing: 0;
+    return (
+        <>
+            <table {...props} ref={ref} className={className}>
+                <tbody>{props.children}</tbody>
+            </table>
+            <style jsx>{/* language=CSS */ `
+                table {
+                    border-spacing: 0;
 
-                        color: ${fg};
-                    }
-                `}</style>
-            </>
-        );
-    },
-);
+                    color: ${fg};
+                }
+            `}</style>
+        </>
+    );
+});
