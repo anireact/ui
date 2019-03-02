@@ -1,4 +1,4 @@
-import { abs, sgn, trunc } from '..';
+import { abs, sgn, trunc } from './Number';
 
 export interface TimeDiff {
     (a: Date, b: Date): number;
