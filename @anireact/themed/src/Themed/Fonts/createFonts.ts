@@ -1,4 +1,5 @@
-import { map, px, Vector6 } from '@anireact/prelude';
+import { px } from '@anireact/css';
+import { map, Vector6 } from '@anireact/prelude';
 import { sizes } from '../Constants/Constants';
 import { MediaState } from '../Media/MediaState';
 import { Fonts, Heading } from './Fonts';
@@ -87,7 +88,15 @@ const headings = (h: number, s: number): Vector6<Heading> => {
             height,
             top,
             bottom,
-            mixin: [`margin:${top} 0 ${bottom}`, `line-height:${height}`, `font-size:${size}`].join(';'),
+            mixin: [
+                `margin:${top} 0 ${bottom}`,
+                `margin-block-start:${top}`,
+                `margin-block-end:${bottom}`,
+                `margin-inline-start:0`,
+                `margin-inline-end:0`,
+                `line-height:${height}`,
+                `font-size:${size}`,
+            ].join(';'),
         };
     }) as Vector6<Heading>;
 };

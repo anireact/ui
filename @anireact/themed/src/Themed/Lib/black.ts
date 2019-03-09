@@ -71,7 +71,7 @@ export const black: RawTheme = {
 
     view: hsl(0, 0, 0, 1),
 
-    base: {
+    normal: {
         backdrop: [0, 0, 0, 0.5],
         focus: [0, 0, 60, 1],
 
@@ -92,10 +92,6 @@ export const black: RawTheme = {
         },
     },
 
-    disabled: [66.67, 0.6667], // TODO: Do something with this.
-
-    primary: 350,
-    secondary: 190,
     info: 260,
     ok: 140,
     warning: 70,

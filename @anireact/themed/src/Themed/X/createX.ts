@@ -1,4 +1,5 @@
-import { map, px } from '@anireact/prelude';
+import { px } from '@anireact/css';
+import { map } from '@anireact/prelude';
 import { sizes } from '../Constants/Constants';
 import { MediaState } from '../Media/MediaState';
 import { RawX } from './RawX';
@@ -21,20 +22,20 @@ export const createX = (raw: RawX, { size, hasTouch }: MediaState): X => {
 const xHelper = (init: number): ReadonlyArray<string> => {
     return map(
         [
-            init,
-            init * (1 + 1 / 3), // l1 // 26.67
-            init * 2, //           l2 // 40
-            init * 3, //           l3 // 60
-            init * 4, //           l4 // 80
-            init * 5, //           l5 // 100
-            init * 6, //           l6 // 120
-            init * 0.8, //         s1 // 16
-            init * 0.5, //         s2 // 10
-            init * 0.25, //        s3 // 5
-            init * 0.15, //        s4 // 3
-            init * 0.1, //         s5 // 2
-            init * 0.05, //        s6 // 1
+            1, //         |    | 20    |
+            1 + 1 / 3, // | l1 | 26.67 |
+            2, //         | l2 | 40    |
+            3, //         | l3 | 60    |
+            4, //         | l4 | 80    |
+            5, //         | l5 | 100   |
+            6, //         | l6 | 120   |
+            0.8, //       | s1 | 16    |
+            0.5, //       | s2 | 10    |
+            0.25, //      | s3 | 5     |
+            0.15, //      | s4 | 3     |
+            0.1, //       | s5 | 2     |
+            0.05, //      | s6 | 1     |
         ],
-        px,
+        x => px(init * x),
     );
 };

@@ -1,77 +1,85 @@
+import { colors } from '@anireact/css';
 import { glowColor, glowEnd, glowGradient } from '@anireact/themed';
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { decorate } from './decorate';
+import React from 'react';
+import { dataHover, DivProps, ui } from './ui';
 
-export type Button = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
-    readonly checked?: boolean | null;
-};
+export interface Button extends DivProps {
+    readonly checked?: boolean;
+}
 
-export const Button = decorate<Button, HTMLButtonElement>(
-    { name: 'Button' },
-    ({ checked, role = 'button', ...props }, { ref, className, theme }) => {
-        const { ui, fg, bg, hover, focus, active, glow, hasTouch } = theme;
-        const { xl3, xs3, xs4, xs5, xs6, ixs2, ixs5, ixs3 } = theme;
+export const Button = ui(({ checked, role = 'button', children, ...rest }: Button, { theme }) => {
+    const { ui, fg, bg, hover, focus, active, glow, hasKeyboard, hasTouch } = theme;
+    const { xl3, xs3, xs4, xs5, xs6, ixs2, ixs5, ixs3 } = theme;
+    const isPush = role === 'switch' || role === 'radio' || role === 'checkbox';
+    const ariaProps = isPush ? { 'aria-checked': Boolean(checked) } : {};
 
-        const toggle = role === 'switch' || role === 'radio' || role === 'checkbox';
-        const aria = toggle ? { 'aria-checked': Boolean(checked) } : {};
+    const regularShadow = `inset 0 0 0 ${xs5} ${bg}`;
+    const keyboardShadow = hasKeyboard ? `inset 0 0 0 ${xs5} ${focus}` : regularShadow;
+    const focusShadow = `0 0 0 ${xs5} ${focus}`;
+    const activeShadow = `inset 0 ${xs6} ${xs3} ${xs5} ${active}`;
+    const pushShadow = isPush && checked ? `${regularShadow}, inset 0 ${xs6} ${xs5} ${xs5} ${active}` : regularShadow;
 
-        return (
-            <>
-                <button {...aria} {...props} role={role} ref={ref} className={className} />
-                <style jsx>{/* language=CSS */ `
-                    button {
-                        position: relative;
-                        border: none;
+    return (
+        <div {...ariaProps} role={role} tabIndex={0} {...rest}>
+            {children}
+            <style jsx>{/* language=CSS */ `
+                div {
+                    ${ui};
+                    ${colors(bg, fg)};
 
-                        user-select: none;
+                    position: relative;
+                    border: none;
 
-                        ${ui};
+                    padding: ${hasTouch ? ixs3 : ixs5} ${ixs2};
+                    padding-inline-start: ${ixs2};
+                    padding-inline-end: ${ixs2};
+                    padding-block-start: ${hasTouch ? ixs3 : ixs5};
+                    padding-block-end: ${hasTouch ? ixs3 : ixs5};
 
-                        padding: ${hasTouch ? ixs3 : ixs5} ${ixs2};
+                    border-radius: ${xs4};
+                    background-image: ${glowGradient};
+                    box-shadow: ${pushShadow};
+                    user-select: none;
 
-                        background-color: ${bg};
-                        background-image: ${glowGradient};
-                        border-radius: ${xs4};
+                    ${glowColor}: ${glow};
+                }
 
-                        color: ${fg};
+                div[${dataHover}] {
+                    background-color: ${hover};
 
-                        ${glowColor}: ${glow};
-                    }
+                    ${glowEnd}: ${xl3};
+                }
 
-                    button:hover {
-                        background-color: ${hover};
+                div:focus {
+                    z-index: 1;
 
-                        ${glowEnd}: ${xl3};
-                    }
+                    outline: none;
+                    box-shadow: ${keyboardShadow}, ${focusShadow}, ${pushShadow};
+                }
 
-                    button:focus {
-                        z-index: 1;
+                div:active {
+                    box-shadow: ${regularShadow}, ${activeShadow};
+                }
 
-                        outline: none;
+                div:focus:active {
+                    box-shadow: ${keyboardShadow}, ${activeShadow}, ${focusShadow};
+                }
+            `}</style>
+        </div>
+    );
+}, 'Button');
 
-                        box-shadow: inset 0 0 0 ${xs5} ${focus}, 0 0 0 ${xs5} ${focus};
-                    }
+/* div::after {
+    ${pos({ top: xs5, left: xs5, right: xs5, bottom: xs5 })};
 
-                    button::after {
-                        content: '';
+    content: '';
+    display: block;
+    position: absolute;
 
-                        display: block;
-                        position: absolute;
+    border-radius: ${xs6};
+    box-shadow: ${isPush && checked ? `inset 0 ${xs6} ${xs5} ${active}` : 'none'};
+} */
 
-                        top: ${xs5};
-                        left: ${xs5};
-                        right: ${xs5};
-                        bottom: ${xs5};
-
-                        border-radius: ${xs6};
-                        box-shadow: ${toggle && checked ? `inset 0 ${xs6} ${xs5} ${active}` : 'none'};
-                    }
-
-                    button:active::after {
-                        box-shadow: inset 0 ${xs6} ${xs3} ${active};
-                    }
-                `}</style>
-            </>
-        );
-    },
-);
+/* div:active::after {
+    box-shadow: inset 0 ${xs6} ${xs3} ${active};
+} */

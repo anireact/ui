@@ -1,104 +1,101 @@
+import { colors, cssid, pos } from '@anireact/css';
 import { IconName } from '@anireact/icons';
+import { isNone } from '@anireact/prelude';
 import { glowColor, glowEnd, glowGradient } from '@anireact/themed';
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { decorate } from './decorate';
+import React from 'react';
 import { Icon } from './Icon';
+import { dataHover, DivProps, ui } from './ui';
 
-export type Checkbox = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+export interface Checkbox extends DivProps {
     readonly checked?: boolean | null;
-};
+}
 
-export const Checkbox = decorate<Checkbox, HTMLButtonElement>(
-    { name: 'Checkbox' },
-    ({ checked, children, ...props }, { ref, className, theme }) => {
-        const { ui, plain, hasTouch, active, focus, uiHeight } = theme;
-        const { xs3, xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
-        const { bg, fg, hover, glow } = plain;
+const iconClass = cssid('Checkbox-icon');
+const textClass = cssid('Checkbox-text');
 
-        const icon = ['checkbox-', checked ? 'checked-' : checked === null ? 'mixed-' : '', 'symbolic'].join('');
-        const paddingV = hasTouch ? ixs3 : ixs5;
-        const state = checked === null ? 'mixed' : Boolean(checked);
+export const Checkbox = ui(({ checked, children, ...rest }: Checkbox, { theme }) => {
+    const { ui, plain, hasTouch, active, focus } = theme;
+    const { xs3, xs4, xs5, xs6, ixs2, ixs3, ixs5, xl3 } = theme;
+    const { bg, fg, hover, glow } = plain;
+    const icon = ['checkbox-', checked ? 'checked-' : isNone(checked) ? 'mixed-' : '', 'symbolic'].join('') as IconName;
 
-        return (
-            <>
-                <button role={'checkbox'} aria-checked={state} {...props} ref={ref} className={className}>
-                    <div className={'icon'}>
-                        <Icon
-                            role={'presentation'}
-                            size={16}
-                            name={icon as IconName}
-                            title={undefined}
-                            tintColor={fg}
-                            tintStyle={'fill'}
-                        />
-                    </div>
-                    <div className={'text'}>{children}</div>
-                </button>
-                <style jsx>{/* language=CSS */ `
-                    button {
-                        display: inline-flex;
+    return (
+        <div tabIndex={0} role={'checkbox'} aria-checked={checked === null ? 'mixed' : Boolean(checked)} {...rest}>
+            <Icon className={iconClass} aria-hidden size={16} name={icon} tintColor={fg} tintStyle={'fill'} />
+            <span className={textClass}>{children}</span>
+            <style jsx>{/* language=CSS */ `
+                div {
+                    ${ui};
+                    ${colors(bg, fg)};
 
-                        position: relative;
-                        border: none;
+                    display: inline-flex;
+                    position: relative;
+                    border: none;
 
-                        user-select: none;
+                    padding: ${hasTouch ? ixs3 : ixs5} ${ixs2};
+                    padding-inline-start: ${ixs2};
+                    padding-inline-end: ${ixs2};
+                    padding-block-start: ${hasTouch ? ixs3 : ixs5};
+                    padding-block-end: ${hasTouch ? ixs3 : ixs5};
 
-                        ${ui};
+                    border-radius: ${xs4};
+                    background-image: ${glowGradient};
+                    user-select: none;
 
-                        padding: ${paddingV} ${ixs2} ${paddingV} calc(${ixs2} - 2px);
+                    ${glowColor}: ${glow};
+                }
 
-                        border-radius: ${xs4};
-                        background-color: ${bg};
-                        background-image: ${glowGradient};
+                div:focus {
+                    z-index: 1;
 
-                        color: ${fg};
+                    outline: none;
+                }
 
-                        ${glowColor}: ${glow};
-                    }
+                div > :global(.${iconClass}) {
+                    margin: 2px -2px 0 -2px;
+                    margin-inline-start: -2px;
+                    margin-inline-end: -2px;
+                    margin-block-start: 2px;
+                    margin-block-end: 0;
+                }
 
-                    button:hover {
-                        background-color: ${hover};
+                div[${dataHover}] {
+                    background-color: ${hover};
 
-                        ${glowEnd}: ${xl3};
-                    }
+                    ${glowEnd}: ${xl3};
+                }
 
-                    button:focus {
-                        z-index: 1;
+                div:focus {
+                    box-shadow: inset 0 0 0 ${xs5} ${focus}, 0 0 0 ${xs5} ${focus};
+                }
 
-                        outline: none;
+                div::after {
+                    ${pos({ top: xs5, left: xs5, right: xs5, bottom: xs5 })};
 
-                        box-shadow: inset 0 0 0 ${xs5} ${focus}, 0 0 0 ${xs5} ${focus};
-                    }
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    speak: none;
 
-                    button:active > div.icon {
-                        transform: scale(0.8);
-                    }
+                    border-radius: ${xs6};
+                }
 
-                    button::after {
-                        content: '';
+                div:active::after {
+                    box-shadow: inset 0 ${xs6} ${xs3} ${active};
+                }
 
-                        display: block;
-                        position: absolute;
+                div:active > :global(.${iconClass}) {
+                    transform: scale(0.8);
+                }
 
-                        top: ${xs5};
-                        left: ${xs5};
-                        right: ${xs5};
-                        bottom: ${xs5};
-
-                        border-radius: ${xs6};
-                    }
-
-                    button:active::after {
-                        box-shadow: inset 0 ${xs6} ${xs3} ${active};
-                    }
-
-                    button > div.icon {
-                        height: ${uiHeight};
-                        padding-top: 2px;
-                        margin-right: calc(${ixs2} - 2px);
-                    }
-                `}</style>
-            </>
-        );
-    },
-);
+                .${textClass} {
+                    margin-left: ${ixs2};
+                    margin-inline-start: ${ixs2};
+                    margin-inline-end: 0;
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                }
+            `}</style>
+        </div>
+    );
+}, 'Checkbox');

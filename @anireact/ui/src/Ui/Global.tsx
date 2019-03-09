@@ -1,12 +1,11 @@
 import React from 'react';
-import { decorate } from './decorate';
+import { DivProps, ui } from './ui';
 
-export const GlobalStyle = decorate<{}, never>({ name: 'GlobalStyle' }, ({}, { theme }) => {
-    const {
-        ui,
-        view,
-        plain: { fg },
-    } = theme;
+export interface Global extends DivProps {}
+
+export const Global = ui(({  }: Global, { theme }) => {
+    const { ui, view, plain } = theme;
+    const { fg } = plain;
 
     return (
         <style jsx global>{/* language=CSS */ `
@@ -19,7 +18,6 @@ export const GlobalStyle = decorate<{}, never>({ name: 'GlobalStyle' }, ({}, { t
 
             *::selection {
                 background-color: ${fg};
-
                 color: ${view};
                 text-shadow: initial;
             }
@@ -27,21 +25,19 @@ export const GlobalStyle = decorate<{}, never>({ name: 'GlobalStyle' }, ({}, { t
             html,
             body,
             #root {
-                width: 100%;
-                height: 100%;
+                display: flex;
+                flex-grow: 1;
             }
 
             #root {
                 ${ui};
-
                 overflow: auto;
             }
 
             body {
                 background-color: ${view};
-
                 color: ${fg};
             }
         `}</style>
     );
-});
+}, 'Global');

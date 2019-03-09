@@ -1,1 +1,1 @@
-export type Level = 'base' | 'primary' | 'secondary' | 'info' | 'ok' | 'warning' | 'error';
+export type Level = 'normal' | 'info' | 'ok' | 'warning' | 'error';

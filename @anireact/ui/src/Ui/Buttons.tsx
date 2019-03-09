@@ -1,50 +1,33 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, ReactElement } from 'react';
-import { Button } from './Button';
-import { decorate } from './decorate';
+import React from 'react';
+import css from 'styled-jsx/css';
+import { DivProps, ui } from './ui';
 
-export type ButtonsItem = Button;
-
-const ButtonsItem = decorate<ButtonsItem, HTMLButtonElement>(
-    { name: 'Buttons.Item' },
-    ({ checked = false, ...props }, { ref, className }) => {
-        return <Button {...props} role={'radio'} checked={checked} ref={ref} className={className} />;
-    },
-);
-
-type Span = DetailedHTMLProps<ButtonHTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-
-export type Buttons = Pick<Span, Exclude<keyof Span, 'children'>> & {
-    readonly children?:
-        | ReactElement<ButtonsItem, typeof ButtonsItem>
-        | ReadonlyArray<ReactElement<ButtonsItem, typeof ButtonsItem>>;
-};
-
-interface Sub {
-    readonly Item: typeof ButtonsItem;
+export interface Buttons extends DivProps {
+    readonly axis?: 'vertical' | 'horizontal';
 }
 
-export const Buttons = decorate<Buttons, HTMLSpanElement, Sub>(
-    { name: 'Buttons' },
-    ({ children, ...props }, { ref, className, theme }) => {
-        const { bg } = theme;
-        const { xs4 } = theme;
+export const Buttons = ui(({ children, axis, ...props }: Buttons, { theme }) => {
+    const { bg } = theme;
+    const { xs4 } = theme;
 
-        return (
-            <>
-                <span role={'radiogroup'} {...props} ref={ref} className={className}>
-                    {children}
-                </span>
-                <style jsx>{/* language=CSS */ `
-                    span {
-                        display: inline-flex;
-                        position: relative;
+    return (
+        <div role={'radiogroup'} {...props}>
+            {children}
+            <style jsx>{styles}</style>
+            <style jsx>{/* language=CSS */ `
+                div {
+                    flex-direction: ${axis === 'vertical' ? 'column' : 'row'};
+                    background-color: ${bg};
+                    border-radius: ${xs4};
+                }
+            `}</style>
+        </div>
+    );
+}, 'Buttons');
 
-                        background-color: ${bg};
-                        border-radius: ${xs4};
-                    }
-                `}</style>
-            </>
-        );
-    },
-    { Item: ButtonsItem },
-);
+const styles = css`
+    div {
+        display: inline-flex;
+        position: relative;
+    }
+`;

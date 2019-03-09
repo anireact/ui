@@ -1,6 +1,6 @@
-import { cssvar } from '@anireact/prelude';
+import { cssid } from '@anireact/css';
 
-const scoped = (x: string) => cssvar(`anireact-glow-${x}`);
+const scoped = (x: string) => cssid(`glow-${x}`);
 
 export const glowColor = scoped('color');
 export const glowStart = scoped('start');

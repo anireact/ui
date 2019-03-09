@@ -1,21 +1,20 @@
 import { clamp } from '@anireact/prelude';
-import React, { DetailedHTMLProps, HTMLAttributes, useContext } from 'react';
-import { decorate } from './decorate';
-import { SectionContext } from './Section';
+import React, { useContext } from 'react';
+import { SectionContext } from './contexts';
+import { HProps, ui } from './ui';
 
-export type H = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+export interface H extends HProps {}
 
-export const H = decorate<H, HTMLHeadingElement>({ name: 'H' }, (props, { ref, className, theme }) => {
+export const H = ui(({ children, ...rest }: H, { theme }) => {
     const { text, h, plain } = theme;
     const { fg } = plain;
-
     const level = useContext(SectionContext);
     const clamped = clamp(1, level, 6);
     const H: any = `h${clamped}`;
 
     return (
-        <>
-            <H {...props} ref={ref} className={className} />
+        <H {...rest}>
+            {children}
             <style jsx>{/* language=CSS */ `
                 h1,
                 h2,
@@ -25,10 +24,9 @@ export const H = decorate<H, HTMLHeadingElement>({ name: 'H' }, (props, { ref, c
                 h6 {
                     ${text};
                     ${h[clamped - 1].mixin};
-
                     color: ${fg};
                 }
             `}</style>
-        </>
+        </H>
     );
-});
+}, 'H');

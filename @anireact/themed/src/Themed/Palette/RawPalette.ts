@@ -1,10 +1,10 @@
 import { Color } from '@anireact/hsl';
-import { Vector2, Vector3, Vector4 } from '@anireact/prelude';
+import { Vector3, Vector4 } from '@anireact/prelude';
 
 export interface RawPalette {
     readonly view: Color;
 
-    readonly base: {
+    readonly normal: {
         readonly backdrop: Vector4<number>;
         readonly focus: Vector4<number>;
 
@@ -25,10 +25,6 @@ export interface RawPalette {
         };
     };
 
-    readonly disabled: Vector2<number>;
-
-    readonly primary: number;
-    readonly secondary: number;
     readonly info: number;
     readonly ok: number;
     readonly warning: number;

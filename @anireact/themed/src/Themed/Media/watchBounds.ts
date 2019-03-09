@@ -1,4 +1,5 @@
-import { map, px, Vector10 } from '@anireact/prelude';
+import { px } from '@anireact/css';
+import { map, Vector10 } from '@anireact/prelude';
 import { Size } from './MediaState';
 import { RawMedia } from './RawMedia';
 
