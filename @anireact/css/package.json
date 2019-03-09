@@ -1,0 +1,32 @@
+{
+    "author": "Marina Miyaoka <miyaokamarina@gmail.com> (https://t.me/miyaokamarina)",
+    "bugs": "https://github.com/anireact/ui/issues?q=is:issue+label:@anireact/css",
+    "description": "CSS-in-JS mixins and functions.",
+    "homepage": "https://github.com/anireact/ui/tree/master/@anireact/css",
+    "license": "GPL-3.0-or-later",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "name": "@anireact/css",
+    "repository": "anireact/ui",
+    "scripts": {
+        "build": "yarn build:js && yarn build:ts",
+        "build:js": "rollup -c ../../rollup.config.js",
+        "build:ts": "tsc --declaration --emitDeclarationOnly --outDir dist --pretty --rootDir src",
+        "clean": "rimraf dist",
+        "prepublishOnly": "yarn run clean && yarn run build"
+    },
+    "types": "dist/index.d.ts",
+    "version": "1.0.0-wip.22",
+    "dependencies": {
+        "@babel/runtime": "^7.3.4",
+        "@anireact/hsl": "^1.0.0-wip.22",
+        "@anireact/prelude": "^1.0.0-wip.22",
+        "core-js": "^2.6.5"
+    },
+    "peerDependencies": {
+        "react": "^16.8.4"
+    },
+    "devDependencies": {
+        "@types/react": "^16.8.7"
+    }
+}
