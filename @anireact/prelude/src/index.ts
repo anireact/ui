@@ -1,5 +1,4 @@
 export * from './Prelude/Collection';
-export * from './Prelude/Css';
 export * from './Prelude/Function';
 export * from './Prelude/List';
 export * from './Prelude/Map';
