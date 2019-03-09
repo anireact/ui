@@ -3,11 +3,11 @@ import { Maybe } from './Maybe';
 
 export type Writable<O> = { -readonly [K in keyof O]: O[K] };
 
-export const keysO = <K extends keyof any>(o: { [L in K]: any }): ReadonlyArray<keyof typeof o> => {
+export const keysO = <K extends keyof any>(o: { [L in K]?: any }): ReadonlyArray<keyof typeof o> => {
     return (Object.keys(o) as unknown) as ReadonlyArray<keyof typeof o>;
 };
 
-export const entriesO = <K extends keyof any, V>(o: { [L in K]: V }): ReadonlyArray<[keyof typeof o, V]> => {
+export const entriesO = <K extends keyof any, V>(o: { [L in K]?: V }): ReadonlyArray<[keyof typeof o, V]> => {
     return fold(
         keysO(o),
         (entries, key) => {
@@ -17,9 +17,9 @@ export const entriesO = <K extends keyof any, V>(o: { [L in K]: V }): ReadonlyAr
     );
 };
 
-export const valuesO = <K extends keyof any, V>(o: { [L in K]: V }): ReadonlyArray<V> => {
+export const valuesO = <K extends keyof any, V>(o: { [L in K]?: V }): ReadonlyArray<V> => {
     return map(keysO(o), k => {
-        return o[k];
+        return o[k]!;
     });
 };
 
