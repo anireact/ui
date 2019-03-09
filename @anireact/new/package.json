@@ -19,7 +19,7 @@
         "enquirer": "^2.0.7",
         "json-stable-stringify": "^1.0.1",
         "mkdirp": "^0.5.1",
-        "upath": "^1.1.0",
-        "yargs": "^13.2.1"
+        "upath": "^1.1.1",
+        "yargs": "^13.2.2"
     }
 }
