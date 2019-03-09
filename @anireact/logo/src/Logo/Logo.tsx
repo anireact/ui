@@ -1,5 +1,5 @@
+import { px } from '@anireact/css';
 import { hsl } from '@anireact/hsl';
-import { px } from '@anireact/prelude';
 import React from 'react';
 
 export interface Logo {
