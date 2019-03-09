@@ -12,12 +12,12 @@
         "start": "webpack-dev-server --mode development",
         "build": "webpack-cli --mode production"
     },
-    "version": "1.0.0-wip.22",
+    "version": "1.0.0-wip.23",
     "dependencies": {
-        "@anireact/themed": "^1.0.0-wip.22",
-        "@anireact/ui": "^1.0.0-wip.22",
+        "@anireact/themed": "^1.0.0-wip.23",
+        "@anireact/ui": "^1.0.0-wip.23",
         "@babel/runtime": "^7.3.4",
-        "@tld/r": "^1.0.0-wip.22",
+        "@tld/r": "^1.0.0-wip.23",
         "core-js": "^2.6.5",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",

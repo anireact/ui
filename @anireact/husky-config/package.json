@@ -7,9 +7,9 @@
     "main": "index.js",
     "name": "@anireact/husky-config",
     "repository": "anireact/ui",
-    "version": "1.0.0-wip.22",
+    "version": "1.0.0-wip.23",
     "dependencies": {
-        "@anireact/commitlint-config": "^1.0.0-wip.22",
+        "@anireact/commitlint-config": "^1.0.0-wip.23",
         "@babel/runtime": "^7.3.4",
         "core-js": "^2.6.5"
     }

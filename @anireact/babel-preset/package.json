@@ -7,7 +7,7 @@
     "main": "index.js",
     "name": "@anireact/babel-preset",
     "repository": "anireact/ui",
-    "version": "1.0.0-wip.22",
+    "version": "1.0.0-wip.23",
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "^7.3.0",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",

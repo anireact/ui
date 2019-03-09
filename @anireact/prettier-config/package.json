@@ -1,6 +1,6 @@
 {
     "name": "@anireact/prettier-config",
-    "version": "1.0.0-wip.22",
+    "version": "1.0.0-wip.23",
     "description": "anireact’s Prettier config.",
     "main": "index.js",
     "repository": "anireact/ui",

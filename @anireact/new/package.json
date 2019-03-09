@@ -1,6 +1,6 @@
 {
     "name": "@anireact/new",
-    "version": "1.0.0-wip.22",
+    "version": "1.0.0-wip.23",
     "description": "Spawns pkgs in your monorepo for you.",
     "main": "index.js",
     "repository": "anireact/ui",
