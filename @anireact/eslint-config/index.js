@@ -387,6 +387,12 @@ module.exports = {
                 'import/no-commonjs': off,
             },
         },
+        {
+            files: ['*.tsx', '*.jsx'],
+            rules: {
+                'max-lines-per-function': off,
+            },
+        },
     ],
     settings: {
         'import/resolver': {
